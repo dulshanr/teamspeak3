@@ -1,6 +1,6 @@
 #!/bin/bash -xue
 
-if [ "$1" -eq "" ] && [ "$2" -eq "" ]; then
+if [ $# -eq 0 ]; then
   source ./ip_config.sh
 else
   U_NAME="$1"
