@@ -9,7 +9,10 @@ fi
 
 SERVERS="servers"
 PROJECT_FOLDER="ts3"
+SCRIPTS="scripts"
 DOCKER_MOUNT="docker_mount"
+COMPOSE_SCRIPT="ts3_compose.sh"
+PROJECT_NAME="teamspeak"
 
 PROJECT_PATH="~/${SERVERS}/${PROJECT_FOLDER}"
 DOCKER_MOUNT_PATH="~/${DOCKER_MOUNT}/${PROJECT_FOLDER}"
@@ -19,6 +22,12 @@ ssh ${U_NAME}@${I_P} "mkdir -p ${PROJECT_PATH}"
 ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/teamspeak"
 ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/maria_db"
 
-scp -r scripts/ ${U_NAME}@${I_P}:${PROJECT_PATH}
 
+rsync -r ${SCRIPTS}/  ${U_NAME}@${I_P}:${PROJECT_PATH}
+
+ssh ${U_NAME}@${I_P} "cd ${PROJECT_PATH}/${SCRIPTS}/ && bash ${COMPOSE_SCRIPT}"
+
+echo "############ Use the following token to gain ADMIN privilege in ts3 client #############"
+ssh ${U_NAME}@${I_P} "grep -r -o 'token=[^ ]*' ${DOCKER_MOUNT_PATH}/${PROJECT_NAME}/logs/"
+echo "############ END #############"
 
