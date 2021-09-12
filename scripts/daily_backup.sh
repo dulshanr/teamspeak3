@@ -1,7 +1,9 @@
 #!/bin/bash -xue
 
+mkdir -p ~/backups
+
 backup_storage_path=~/backups
-to_backup_path=/root/docker_mount/ts3/
+DOCKER_MOUNT_PATH="~/${DOCKER_MOUNT}/${PROJECT_FOLDER}"
 MAX_NUMBER=3
 
 
@@ -19,4 +21,4 @@ else
 fi
 
 echo "creating backup with $current_date"
-tar -czvf $backup_storage_path/${current_date}.tar.gz $to_backup_path
+tar -czvf $backup_storage_path/${current_date}.tar.gz $DOCKER_MOUNT_PATH
