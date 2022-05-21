@@ -26,3 +26,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: teamspeak
+
+  sinusbot:
+    image: sinusbot/docker
+    restart: always
+    ports:
+      - 8087:8087
+    volumes:
+      - ~/docker_mount/sinusbot/scripts:/opt/sinusbot/scripts
+      - ~/docker_mount/sinusbot/data:/opt/sinusbot/data
+    environment:
+      OVERRIDE_PASSWORD: Password1

@@ -21,6 +21,8 @@ DOCKER_MOUNT_PATH="~/${DOCKER_MOUNT}/${PROJECT_FOLDER}"
 ssh ${U_NAME}@${I_P} "mkdir -p ${PROJECT_PATH}"
 ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/teamspeak"
 ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/maria_db"
+ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/sinusbot/scripts"
+ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/sinusbot/data"
 
 
 rsync -r ${SCRIPTS}/  ${U_NAME}@${I_P}:${PROJECT_PATH}
