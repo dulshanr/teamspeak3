@@ -27,6 +27,6 @@ ssh ${U_NAME}@${I_P} "mkdir -p ${DOCKER_MOUNT_PATH}/sinusbot/data"
 
 rsync -r ${SCRIPTS}/  ${U_NAME}@${I_P}:${PROJECT_PATH}
 
-ssh ${U_NAME}@${I_P} "cd ${PROJECT_PATH}/${SCRIPTS}/ && bash ${COMPOSE_SCRIPT}"
+ssh ${U_NAME}@${I_P} "cd ${PROJECT_PATH}/ && bash ${COMPOSE_SCRIPT}"
 
 
